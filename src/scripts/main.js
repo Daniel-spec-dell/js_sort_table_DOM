@@ -2,11 +2,15 @@
 
 const table = document.querySelector('table');
 const tBody = document.querySelector('tbody');
-const tr = tBody.querySelectorAll('tr');
 
 table.addEventListener('click', (e) => {
+  const tr = tBody.querySelectorAll('tr');
   const targetTh = e.target.closest('th');
   const rows = Array.from(tr);
+
+  if (!targetTh) {
+    return;
+  }
 
   if (targetTh.textContent === 'Name') {
     getStringSort(rows, 0);
